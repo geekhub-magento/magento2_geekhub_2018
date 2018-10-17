@@ -1,0 +1,11 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="footer.geekhub.container">
+            <block class="Magento\Cms\Block\Block" name="geekhub.cms.block" before="geekhub_template_block">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">geekhub_cms_block</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
