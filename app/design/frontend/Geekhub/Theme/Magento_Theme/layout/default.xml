@@ -7,5 +7,16 @@
                 <argument name="logo_img_height" xsi:type="number">200</argument>
             </arguments>
         </referenceBlock>
+        <referenceContainer name="footer">
+            <container name="footer.geekhub.container" htmlClass="pseudo-container" htmlTag="div" after="footer_links">
+                <block class="Magento\Framework\View\Element\Text" name="geekhub.label" as="geekhub_label">
+                    <action method="setText">
+                        <argument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="value" xsi:type="string">This site was made with the help of geekhub.com</argument>
+                    </action>
+                </block>
+                <block class="Magento\Framework\View\Element\Template" name="geekhub.template" as="geekhub_template_block" template="Magento_Theme::geekhub/footer_item_template.phtml"/>
+
+            </container>
+        </referenceContainer>
     </body>
 </page>
