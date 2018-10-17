@@ -15,8 +15,8 @@
                     </action>
                 </block>
                 <block class="Magento\Framework\View\Element\Template" name="geekhub.template" as="geekhub_template_block" template="Magento_Theme::geekhub/footer_item_template.phtml"/>
-
             </container>
         </referenceContainer>
+        <move element="form.subscribe" destination="footer.geekhub.container" after="-"/>
     </body>
 </page>
