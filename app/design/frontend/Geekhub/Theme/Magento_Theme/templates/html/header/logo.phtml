@@ -12,6 +12,7 @@
 ?>
 <?php $storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();?>
 <span data-action="toggle-nav" class="action nav-toggle"><span><?= /* @escapeNotVerified */ __('Toggle Nav') ?></span></span>
+<?= $block->getChildHtml('custom_text'); ?>
 <?php if ($block->isHomePage()):?>
     <strong class="logo">
 <?php else: ?>
