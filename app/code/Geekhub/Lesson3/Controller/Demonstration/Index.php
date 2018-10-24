@@ -2,8 +2,6 @@
 
 namespace Geekhub\Lesson3\Controller\Demonstration;
 
-use Magento\Framework\App\Action\Context;
-
 class Index extends \Magento\Framework\App\Action\Action
 {
     /**
@@ -11,6 +9,7 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-        die("Hello 😉 - Geekhub\\Lesson3\\Controller\\Demonstration\\Index - execute() method");
+        $this->_view->loadLayout();
+        $this->_view->renderLayout();
     }
 }
