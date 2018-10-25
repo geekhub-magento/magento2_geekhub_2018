@@ -11,10 +11,10 @@ class IndexPage extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-        $geethubText = "You're so a lucky man! This is really your Day";
+
         /** @var \Magento\Framework\View\Result\Page $resultPage */
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-        $resultPage->getLayout()->getBlock('custom.lesson.page.result')->setGeethubText($geethubText);
+        $resultPage ->addHandle('custom_handle');
 
         return $resultPage;
     }

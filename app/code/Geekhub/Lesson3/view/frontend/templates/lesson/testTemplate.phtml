@@ -11,4 +11,7 @@
             <?= /* @escapeNotVerified */ $block->getGeethubText(); ?>
         </h3>
     <?php endif;?>
+    <?php if ($block->getBlockHtml('geethub.use.custom.handle.lesson')):?>
+        <?= /* @escapeNotVerified */ $block->getBlockHtml('geethub.use.custom.handle'); ?>
+    <?php endif;?>
 </div>
