@@ -6,7 +6,7 @@
     <!--Use router 'admin' for admin route, AND PUT THIS file to etc/adminhtml -->
     <router id="standard">
         <!--Define a custom route with id and frontName-->
-        <route id="geekhub_lesson3" frontName="geekhub_lesson3">
+        <route id="geekhub_lesson3" frontName="geekhub-lesson3">
             <!--The module which this route match to-->
             <module name="Geekhub_Lesson3" />
         </route>
