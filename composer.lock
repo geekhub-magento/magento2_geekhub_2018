@@ -6788,12 +6788,6 @@
         {
             "name": "magento/product-community-edition",
             "version": "2.2.6",
-            "dist": {
-                "type": "zip",
-                "url": "https://repo.magento.com/archives/magento/product-community-edition/magento-product-community-edition-2.2.6.0.zip",
-                "reference": null,
-                "shasum": "2aacefd94b6be05d85e58a1269347b71bc4b2a71"
-            },
             "require": {
                 "amzn/amazon-pay-and-login-with-amazon-core-module": "2.1.0",
                 "amzn/amazon-pay-module": "2.1.0",
