@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="sidebar.additional">
+            <block class="Geekhub\Lesson3\Block\CustomBlock"
+                   name="custom.lesson.page.result.2"
+                   template="Geekhub_Lesson3::lesson/test.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

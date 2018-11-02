@@ -1,0 +1,16 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+?>
+
+<div class="content-wrapper">
+    <h1>
+        <span>Your request was successfully</span>
+    </h1>
+    <?php if ($block->getGeethubText()):?>
+    <h3>
+        <?= /* @escapeNotVerified */ $block->getGeethubText(); ?>
+    </h3>
+    <?php endif;?>
+    <a href="<?= $block->getUrl('geekhub_lesson3/demonstration/indexjson') ?>">Link to JSON controller</a>
+</div>
+
