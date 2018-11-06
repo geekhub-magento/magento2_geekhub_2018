@@ -1,0 +1,14 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+?>
+
+<div class="content-wrapper">
+    <h1>
+        <span>Response is COMING</span>
+    </h1>
+    <?php if ($block->getGeethubText()):?>
+        <h3>
+            <?= /* @escapeNotVerified */ $block->getGeethubText(); ?>
+        </h3>
+    <?php endif;?>
+</div>
