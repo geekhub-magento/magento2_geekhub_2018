@@ -1,21 +1,24 @@
 <?php
 /** @var $block \Magento\Catalog\Block\Product\View */
 ?>
-<div id="product-name" class="chapter-explanation">
+<div id="product-name"
+     class="chapter-explanation"
+     data-mage-init='{"Geekhub_Lesson5/js/example": {"another":"example"}}'>
+
     <pre>
             {
                 "*": {
-                    "Geekhub_Lesson5/example":{}
+                    "Geekhub_Lesson5/js/example":{}
                 }
             }
     </pre>
-    <span><?php echo $block->escapeHtml(__('Magento will look at the key of this object, and include it (the key) as a RequireJS module. That’s what loading our example.js script.'))?></span>
+    <span><?php echo $block->escapeHtml(__('Data-mage-init Attribute'))?></span>
 </div>
 <div id="example-init" class="chapter-explanation">
       <pre>
             {
                 "#product-name": {
-                    "Geekhub_Lesson5/example":{}
+                    "Geekhub_Lesson5/js/example":{}
                 }
             }
     </pre>
@@ -23,13 +26,13 @@
     <span><?php echo $block->escapeHtml(__('in this case the script will be bounded to an element which have the selector'))?></span>
 </div>
 
-<script type="text/x-magento-init">
-    {
-        ".chapter-explanation": {
-            "Geekhub_Lesson5/js/example": {
-                "config":
-                    "<?= /* @escapeNotVerified */ 'Product has SKU '.$block->getProduct()->getSku(); ?>"
-            }
-        }
-    }
-</script>
+<!--<script type="text/x-magento-init">-->
+<!--    {-->
+<!--        ".chapter-explanation": {-->
+<!--            "Geekhub_Lesson5/js/example": {-->
+<!--                "config":-->
+<!--                    "--><?//= /* @escapeNotVerified */ 'Product has SKU '.$block->getProduct()->getSku(); ?><!--"-->
+<!--            }-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
