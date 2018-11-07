@@ -1,0 +1,45 @@
+<div>
+    <a href="#" id="click-header">View Video</a>
+</div>
+<div id="header-mpdal" style="display:none;">
+    <div id="video-content-wrapper">
+    </div>
+</div>
+
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: '',
+                buttons: [{
+                    text: $.mage.__('Close'),
+                    class: '',
+                    click: function () {
+                        $('#video-content-wrapper').empty();
+                        this.closeModal();
+                    }
+                }]
+            };
+
+            var popup = modal(options, $('#header-mpdal'));
+            $("#click-header").on('click',function(){
+                var modalContent = '<iframe width="1000" height="500"'+
+                'src="https://www.youtube.com/embed/x_fOnUYy3Fw?autoplay=1&ecver=1&rel=0"'+
+                'frameborder="0" gesture="media" allow="autoplay; encrypted-media" allowfullscreen>'+
+                '</iframe>';
+                $('#video-content-wrapper').html(modalContent);
+                $("#header-mpdal").modal("openModal");
+            });
+        }
+    );
+</script>
