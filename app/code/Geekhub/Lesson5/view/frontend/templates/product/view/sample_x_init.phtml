@@ -3,7 +3,7 @@
 ?>
 <div id="product-name"
      class="chapter-explanation"
-     data-mage-init='{"Geekhub_Lesson5/js/example": {"another":"example"}}'>
+     data-mage-init='{"geethubHello": {"message": "Hello GeekHub"}}'>
 
     <pre>
             {
@@ -26,13 +26,13 @@
     <span><?php echo $block->escapeHtml(__('in this case the script will be bounded to an element which have the selector'))?></span>
 </div>
 
-<!--<script type="text/x-magento-init">-->
-<!--    {-->
-<!--        ".chapter-explanation": {-->
-<!--            "Geekhub_Lesson5/js/example": {-->
-<!--                "config":-->
-<!--                    "--><?//= /* @escapeNotVerified */ 'Product has SKU '.$block->getProduct()->getSku(); ?><!--"-->
-<!--            }-->
-<!--        }-->
-<!--    }-->
-<!--</script>-->
+<script type="text/x-magento-init">
+    {
+        "#example-init.chapter-explanation": {
+            "Geekhub_Lesson5/js/example": {
+                "config":
+                    "<?= /* @escapeNotVerified */ 'Product has SKU '.$block->getProduct()->getSku(); ?>"
+            }
+        }
+    }
+</script>
