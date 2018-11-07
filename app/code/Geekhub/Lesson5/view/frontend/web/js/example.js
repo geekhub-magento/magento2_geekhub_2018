@@ -1,9 +1,9 @@
 define([], function () {
-    var mageJsComponent = function(config)
+    var mageJsComponent = function(config, node)
     {
         alert("Your Js module is working");
         console.log(config);
-        // alert(config);
+        console.log(node);
     };
 
     return mageJsComponent;
