@@ -1,0 +1,35 @@
+<?php
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+<div id="product-name" class="first-chapter">
+    <pre>
+            {
+                "*": {
+                    "Geekhub_Lesson5/example":{}
+                }
+            }
+    </pre>
+    <span><?php echo $block->escapeHtml(__('Magento will look at the key of this object, and include it (the key) as a RequireJS module. That’s what loading our example.js script.'))?></span>
+</div>
+<div id="example-init" class="second-chapter">
+      <pre>
+            {
+                "#product-name": {
+                    "Geekhub_Lesson5/example":{}
+                }
+            }
+    </pre>
+    <span><?php echo $block->escapeHtml(__('The * we used previously is actually a special case, for programs that don’t need to operate on DOM nodes'))?></span>
+    <span><?php echo $block->escapeHtml(__('in this case the script will be bounded to an element which have the selector'))?></span>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Geekhub_Lesson5/js/example": {
+                "config":
+                    "<?= /* @escapeNotVerified */ 'Product has SKU '.$block->getProduct()->getSku(); ?>"
+            }
+        }
+    }
+</script>
