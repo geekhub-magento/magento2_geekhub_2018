@@ -1,7 +1,7 @@
 <?php
 /** @var $block \Magento\Catalog\Block\Product\View */
 ?>
-<div id="product-name" class="first-chapter">
+<div id="product-name" class="chapter-explanation">
     <pre>
             {
                 "*": {
@@ -11,7 +11,7 @@
     </pre>
     <span><?php echo $block->escapeHtml(__('Magento will look at the key of this object, and include it (the key) as a RequireJS module. That’s what loading our example.js script.'))?></span>
 </div>
-<div id="example-init" class="second-chapter">
+<div id="example-init" class="chapter-explanation">
       <pre>
             {
                 "#product-name": {
@@ -25,7 +25,7 @@
 
 <script type="text/x-magento-init">
     {
-        "#product-name": {
+        ".chapter-explanation": {
             "Geekhub_Lesson5/js/example": {
                 "config":
                     "<?= /* @escapeNotVerified */ 'Product has SKU '.$block->getProduct()->getSku(); ?>"
