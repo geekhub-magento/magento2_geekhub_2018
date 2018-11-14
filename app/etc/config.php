@@ -6,6 +6,7 @@ return [
         'Magento_Eav' => 1,
         'Magento_Theme' => 1,
         'Geekhub_Lesson3' => 1,
+        'Geekhub_Lesson5' => 1,
         'Geekhub_RequestSample' => 1,
         'Magento_Cms' => 1,
         'Magento_Customer' => 1,
