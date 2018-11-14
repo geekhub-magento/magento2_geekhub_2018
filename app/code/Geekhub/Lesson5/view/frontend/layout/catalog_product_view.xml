@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info.details">
+            <block class="Magento\Catalog\Block\Product\View"
+                   name="request.sample.tab.plain"
+                   as="request.sample.js"
+                   template="Geekhub_Lesson5::product/view/sample_js.phtml"
+                   group="detailed_info">
+                <arguments>
+                    <argument translate="true" name="title" xsi:type="string">Video JS</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Catalog\Block\Product\View"
+                   name="request.sample.tab.x.init"
+                   template="Geekhub_Lesson5::product/view/sample_x_init.phtml"
+                   group="detailed_info">
+                <arguments>
+                    <argument translate="true" name="title" xsi:type="string">X - Init Example</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>
