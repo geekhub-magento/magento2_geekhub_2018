@@ -1,18 +1,12 @@
 <?xml version="1.0"?>
-<!--
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
--->
-<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="product.info.details">
-
             <block class="Magento\Catalog\Block\Product\View"
                    name="request.sample.tab"
                    as="request.sample"
-                   template="Geekhub_Lesson3::product/view/request_sample.phtml"
+                   template="Geekhub_RequestSample::product/view/request_sample.phtml"
                    group="detailed_info">
                 <arguments>
                     <argument translate="true" name="title" xsi:type="string">Request a Sample</argument>
