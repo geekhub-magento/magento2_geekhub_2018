@@ -13,10 +13,13 @@
                 <?= $imageObject->toHtml() ?>
             </div>
         <?php endif; ?>
-        <form class="form request-a-sample"
+        <form class="form request-sample"
               action="#"
               id="request-sample-form"
-              method="post">
+              method="post"
+              data-mage-init='{"requestSample":{}}'
+              onsubmit="return false;"
+        >
             <fieldset class="fieldset">
                 <legend class="legend">
                     <span><?= $block->escapeHtml(__('Write Us')) ?></span>
