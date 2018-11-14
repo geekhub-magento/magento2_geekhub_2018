@@ -1,7 +1,8 @@
 define([
     'jquery',
+    'geekHub_validationAlert',
     'jquery/ui'
-], function ($) {
+], function ($, validationAlert) {
     'use strict';
 
     $.widget('geekhub.requestSample', {
@@ -16,14 +17,15 @@ define([
 
         submitForm: function () {
             if (!this.validateForm()) {
+                validationAlert();
                 return;
             }
 
-            alert('Form was submitted');
+            console.log('Form was submitted');
         },
 
         validateForm: function () {
-            return true;
+            return $(this.element).validation().valid();
         }
     });
 
