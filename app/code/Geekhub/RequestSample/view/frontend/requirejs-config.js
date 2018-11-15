@@ -6,5 +6,12 @@ var config = {
             // overriding default cookie component
             'jquery/jquery.cookie': 'Geekhub_RequestSample/js/jquery/jquery.cookie'
         }
+    },
+    config: {
+        mixins: {
+            'Magento_Catalog/js/catalog-add-to-cart': {
+                'Geekhub_RequestSample/js/product/catalog-add-to-cart-mixin': true
+            }
+        }
     }
 };

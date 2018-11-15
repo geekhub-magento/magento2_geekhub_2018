@@ -16,6 +16,7 @@ define([
         /** @inheritdoc */
         _create: function () {
             $(this.element).submit(this.submitForm.bind(this));
+            $('body').on('geekhub_request_sample_clear_cookie', this.clearCookie.bind(this));
         },
 
         submitForm: function () {
@@ -68,6 +69,10 @@ define([
 
         validateForm: function () {
             return $(this.element).validation().valid();
+        },
+
+        clearCookie: function () {
+            $.mage.cookies.clear(this.options.cookieName);
         }
     });
 
