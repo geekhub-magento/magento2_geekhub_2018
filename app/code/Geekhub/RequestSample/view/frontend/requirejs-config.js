@@ -1,8 +1,8 @@
 var config = {
     map: {
         '*': {
-            geekHub_requestSample: 'Geekhub_RequestSample/js/request-sample',
-            geekHub_validationAlert: 'Geekhub_RequestSample/js/validation-alert',
+            geekHubRequestSample: 'Geekhub_RequestSample/js/request-sample',
+            geekHubValidationAlert: 'Geekhub_RequestSample/js/validation-alert',
             // overriding default cookie component
             'jquery/jquery.cookie': 'Geekhub_RequestSample/js/jquery/jquery.cookie'
         }
@@ -14,7 +14,7 @@ var config = {
             },
             'Magento_Checkout/js/action/place-order': {
                 'Geekhub_RequestSample/js/checkout/place-order-mixin': true
-            },
+            }
         }
     }
 };

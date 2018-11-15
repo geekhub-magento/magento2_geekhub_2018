@@ -1,6 +1,6 @@
 define([
     'jquery',
-    'geekHub_validationAlert',
+    'geekHubValidationAlert',
     'Magento_Ui/js/modal/alert',
     'mage/cookies',
     'mage/translate',
