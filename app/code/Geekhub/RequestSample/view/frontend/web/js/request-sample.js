@@ -25,8 +25,6 @@ define([
                 return;
             }
 
-            console.log('Form was submitted');
-
             var formData = new FormData($(this.element).get(0));
             formData.append('form_key', $.mage.cookies.get('form_key'));
 
@@ -57,7 +55,6 @@ define([
                 },
 
                 error: function (error) {
-                    console.log(JSON.stringify(error));
                     $('body').trigger('processStop');
                     alert({
                         title: $.mage.__('Error'),
