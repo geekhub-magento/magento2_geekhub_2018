@@ -37,25 +37,33 @@ define([
                 type: 'post',
                 dataType: 'json',
                 context: this,
-            })
-            .done(function (response) {
-                alert({
-                    title: $.mage.__(response.status),
-                    content: $.mage.__(response.message)
-                });
 
-                if (response.status === 'Success') {
-                    // can use this cookie to prevent from sending requests too often
-                    $.mage.cookies.set(this.options.cookieName, true);
+                beforeSend: function () {
+                    $('body').trigger('processStart');
+                },
+
+                success: function (response) {
+                    $('body').trigger('processStop');
+                    alert({
+                        title: $.mage.__(response.status),
+                        content: $.mage.__(response.message)
+                    });
+
+                    if (response.status === 'Success') {
+                        // can use this cookie to prevent from sending requests too often
+                        $.mage.cookies.set(this.options.cookieName, true);
+                    }
+                },
+
+                error: function (error) {
+                    console.log(JSON.stringify(error));
+                    $('body').trigger('processStop');
+                    alert({
+                        title: $.mage.__('Error'),
+                        content: $.mage.__('Your request can not be submitted right now. Please, contact us directly via email or phone to get your Sample.')
+                    });
                 }
             })
-            .fail(function (error) {
-                console.log(JSON.stringify(error));
-                alert({
-                    title: 'Error',
-                    content: 'Your request can not be submitted. Please, contact us directly via email or prone to get your Sample.'
-                });
-            });
         },
 
         validateForm: function () {
