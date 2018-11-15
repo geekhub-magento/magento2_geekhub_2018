@@ -3,13 +3,14 @@ define([
     'geekHub_validationAlert',
     'Magento_Ui/js/modal/alert',
     'mage/cookies',
+    'mage/translate',
     'jquery/ui'
 ], function ($, validationAlert, alert) {
     'use strict';
 
     $.widget('geekhub.requestSample', {
         options: {
-            action: ''
+            cookieName: 'geekhub_sample_was_requested'
         },
 
         /** @inheritdoc */
@@ -39,9 +40,14 @@ define([
             })
             .done(function (response) {
                 alert({
-                    title: response.status,
-                    content: response.message
+                    title: $.mage.__(response.status),
+                    content: $.mage.__(response.message)
                 });
+
+                if (response.status === 'Success') {
+                    // can use this cookie to prevent from sending requests too often
+                    $.mage.cookies.set(this.options.cookieName, true);
+                }
             })
             .fail(function (error) {
                 console.log(JSON.stringify(error));

@@ -9,7 +9,7 @@
             </div>
         <?php endif; ?>
         <form class="form request-sample"
-              action="<?= $block->getUrl('request_sample/submit') ?>"
+              action="<?= $block->escapeUrl($block->getUrl('request_sample/submit')) ?>"
               id="request-sample-form"
               method="post"
               data-mage-init='{"geekHub_requestSample":{}}'
