@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<page layout='1column' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" >
+  <head>
+    <title>
+        Knock Out Testing
+    </title>
+</head>
+<body>
+    <referenceContainer name="content">
+        <block class="Geekhub\Lesson7\Block\Grid" before="-" cacheable="false" template="Geekhub_Lesson7::grid.phtml">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="sample-grids" xsi:type="array">
+                            <item name="component" xsi:type="string">Geekhub_Lesson7/js/view/grid</item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </block>
+    </referenceContainer>
+</body>
+</page>
