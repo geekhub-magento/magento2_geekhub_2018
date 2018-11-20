@@ -1,0 +1,17 @@
+<div id="ko-hello-world" data-bind="scope:'geekhub-ko-helloworld'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "#ko-hello-world": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "geekhub-ko-helloworld": {
+                        "component": "Geekhub_Lesson7/js/view/grid",
+                        "template" : "Geekhub_Lesson7/grid"
+                    }
+                }
+            }
+        }
+    }
+    </script>
+</div>
