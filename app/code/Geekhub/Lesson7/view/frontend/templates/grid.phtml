@@ -1,17 +1,11 @@
-<div id="ko-hello-world" data-bind="scope:'geekhub-ko-helloworld'">
+<div id="block-sample-grid" data-bind="scope:'sample-grids'" class="block">
     <!-- ko template: getTemplate() --><!-- /ko -->
-    <script type="text/x-magento-init">
+
+<script type="text/x-magento-init">
     {
-        "#ko-hello-world": {
-            "Magento_Ui/js/core/app": {
-               "components": {
-                    "geekhub-ko-helloworld": {
-                        "component": "Geekhub_Lesson7/js/view/grid",
-                        "template" : "Geekhub_Lesson7/grid"
-                    }
-                }
-            }
+        "#block-sample-grid": {
+            "Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout();?>
         }
     }
-    </script>
+</script>
 </div>

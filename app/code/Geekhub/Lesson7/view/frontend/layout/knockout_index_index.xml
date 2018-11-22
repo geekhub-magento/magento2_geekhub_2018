@@ -9,7 +9,17 @@
 </head>
 <body>
     <referenceContainer name="content">
-        <block class="Magento\Framework\View\Element\Template" before="-" cacheable="false" template="Geekhub_Lesson7::grid.phtml" />
+        <block class="Geekhub\Lesson7\Block\Grid" before="-" cacheable="false" template="Geekhub_Lesson7::grid.phtml">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="sample-grids" xsi:type="array">
+                            <item name="component" xsi:type="string">Geekhub_Lesson7/js/view/grid</item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </block>
     </referenceContainer>
 </body>
 </page>
