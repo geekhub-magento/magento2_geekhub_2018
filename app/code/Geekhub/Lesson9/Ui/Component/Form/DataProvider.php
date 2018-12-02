@@ -41,6 +41,30 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
     }
 
     /**
+     * @inheritdoc
+     */
+    public function getMeta()
+    {
+        $meta = parent::getMeta();
+        $meta['general']['children']['custom_field'] = [
+            'arguments' => [
+                'data' => [
+                    'config' => [
+                        'componentType' => 'field',
+                        'formElement'   => 'input',
+                        'label'         => __('Custom Field'),
+                        'dataType'      => 'text',
+                        'sortOrder'     => 45,
+                        'dataScope'     => 'custom_field',
+                    ]
+                ]
+            ],
+        ];
+
+        return $meta;
+    }
+
+    /**
      * Get data
      *
      * @return array
