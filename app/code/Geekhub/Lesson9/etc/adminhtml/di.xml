@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Geekhub\Lesson9\Ui\Component\Form\DataProvider\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="customField" xsi:type="array">
+                    <item name="class" xsi:type="string">Geekhub\Lesson9\Ui\Component\Form\DataProvider\Modifier\CustomField</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+                <item name="importsConfig" xsi:type="array">
+                    <item name="class" xsi:type="string">Geekhub\Lesson9\Ui\Component\Form\DataProvider\Modifier\ImportConfig</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Geekhub\Lesson9\Ui\Component\Form\DataProvider">
+        <arguments>
+            <argument name="pool" xsi:type="object">Geekhub\Lesson9\Ui\Component\Form\DataProvider\Modifier\Pool</argument>
+        </arguments>
+    </type>
+</config>
