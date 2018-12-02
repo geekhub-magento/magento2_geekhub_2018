@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">cron_job_form.cron_job_form_data_source</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="Geekhub\Lesson9\Block\Adminhtml\Job\Edit\SaveButton"/>
+        </buttons>
+        <namespace>cron_job_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>cron_job_form.cron_job_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="cron_job_form_data_source" component="Magento_Ui/js/form/provider">
+        <settings>
+            <submitUrl path="lesson9/cron/save"/>
+        </settings>
+        <dataProvider class="Geekhub\Lesson9\Ui\Component\Form\DataProvider" name="cron_job_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>schedule_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label/>
+        </settings>
+        <field name="schedule_id" sortOrder="10" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>schedule_id</dataScope>
+            </settings>
+        </field>
+        <field name="job_code" sortOrder="20" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Job Code</label>
+                <dataScope>job_code</dataScope>
+            </settings>
+        </field>
+        <field name="status" sortOrder="30" formElement="select">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>select</dataType>
+                <label translate="true">Status</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Geekhub\Lesson9\Model\Config\Source\Status"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="messages" sortOrder="40" formElement="textarea">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Messages</label>
+            </settings>
+        </field>
+        <field name="scheduled_at" sortOrder="50" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="options" xsi:type="array">
+                        <item name="showsTime" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Scheduled At</label>
+            </settings>
+        </field>
+    </fieldset>
+</form>
