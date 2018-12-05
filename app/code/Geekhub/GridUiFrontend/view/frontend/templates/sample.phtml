@@ -1,0 +1,22 @@
+<?php
+?>
+
+<div class="sample content"
+     data-bind="scope: 'geethub-example-component'">
+    <h2 data-bind="title"></h2>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                        "geethub-example-component": {
+                            "component" : "Geekhub_GridUiFrontend/js/simple-example,
+                            "title" : "It is alive"
+                        }
+                    }
+                }
+            }
+    }
+</script>
