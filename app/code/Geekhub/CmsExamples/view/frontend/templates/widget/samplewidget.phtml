@@ -1,10 +1,15 @@
+<?php
+/* @var $block \Geekhub\CmsExamples\Block\Widget\SpecialLink */
+?>
+
+
 <style>
     .geekhub-custom-widget {
         background: #ff0;
         padding: 30px;
         border-radius: 5px;
-        width: <?php echo $this->getData('content_width') ?>;
-        float: <?php echo $this->getData('content_aligment') ?>;
+        width: <?php echo $block->getData('content_width') ?>;
+        float: <?php echo $block->getData('content_aligment') ?>;
     }
 </style>
 <div class="geekhub-custom-widget">
