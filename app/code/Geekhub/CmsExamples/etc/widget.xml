@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="Geekhub\CmsExamples\Block\Widget\SpecialLink"
+            id="geethub_samplewidget">
+        <label>Special Links</label>
+        <description>First Step to CMS</description>
+        <parameters>
+            <parameter name="widget_title" xsi:type="text"
+                       visible="true"
+                       sort_order="20">
+                <label translate="true">
+                    Title
+                </label>
+            </parameter>
+            <parameter name="widget_content" xsi:type="text"
+                    sort_order="30"
+                    visible="true">
+                <label translate="true">
+                    Content
+                </label>
+            </parameter>
+
+            <parameter name="content_width" xsi:type="select"
+                       source_model="Geekhub\CmsExamples\Model\Config\Source\WidgetWidth"
+                       visible="true" sort_order="40" >
+                <label translate="true">Content Width</label>
+            </parameter>
+            <parameter name="content_aligment" xsi:type="select"
+                       visible="true" sort_order="50" >
+                <label translate="true">Widget aligment</label>
+                <options>
+                    <option name="left" value="left">
+                        <label translate="true">Left</label>
+                    </option>
+                    <option name="right"
+                            value="right"
+                            selected="true">
+                        <label translate="true">Right</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="show_buttons" xsi:type="multiselect"
+                       required="true"
+                       visible="true">
+                <label translate="true">Buttons to show</label>
+                <options>
+                    <option name="add_to_cart" value="add_to_cart">
+                        <label translate="true">Add to Cart</label>
+                    </option>
+                    <option name="add_to_compare" value="add_to_compare">
+                        <label translate="true">Add to Compare</label>
+                    </option>
+                    <option name="add_to_wishlist" value="add_to_wishlist">
+                        <label translate="true">Add to Wishlist</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+        <containers>
+            <container name="content">
+                <template name="grid" value="default" />
+            </container>
+            <container name="content.top">
+                <template name="grid" value="default" />
+            </container>
+        </containers>
+    </widget>
+</widgets>

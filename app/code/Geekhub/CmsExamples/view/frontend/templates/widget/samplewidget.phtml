@@ -1,0 +1,36 @@
+<?php
+/* @var $block \Geekhub\CmsExamples\Block\Widget\SpecialLink */
+?>
+
+
+<style>
+    .geekhub-custom-widget {
+        background: #ff0;
+        padding: 30px;
+        border-radius: 5px;
+        width: <?php echo $block->getData('content_width') ?>;
+        float: <?php echo $block->getData('content_aligment') ?>;
+    }
+</style>
+<div class="geekhub-custom-widget">
+    <?php if($block->getWidgetTitle()): ?>
+        <h2 class='custom-widget-title'>
+            <?php echo $block->getWidgetTitle(); ?>
+        </h2>
+    <?php endif; ?>
+    <?php if($block->getWidgetContent()): ?>
+        <h2 class='custom-widget-content'>
+            <?php echo $block->getWidgetContent(); ?>
+        </h2>
+    <?php endif; ?>
+
+    <?php if($block->getShowButtons()):
+        $buttonTypes = explode(",",$block->getShowButtons());
+        ?>
+    <?php foreach ($buttonTypes as $item): ?>
+        <button class='primary-<?= $item ?>'>
+            <?php echo $block->getButtonTitle($item); ?>
+        </button>
+    <?php endforeach;?>
+    <?php endif; ?>
+</div>
