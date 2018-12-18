@@ -6,6 +6,7 @@
             <block class="Magento\Catalog\Block\Product\View"
                    name="request.sample.tab"
                    as="request.sample"
+                   after="-"
                    template="Geekhub_RequestSample::product/view/request_sample.phtml"
                    group="detailed_info">
                 <arguments>
