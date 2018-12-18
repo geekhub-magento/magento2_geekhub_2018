@@ -1,0 +1,37 @@
+<?php
+declare(strict_types=1);
+
+namespace d_AbstractClass;
+
+abstract class Foo
+{
+    public function __construct()
+    {
+        echo "Hi, I'm " . self::class . "\n";
+        echo "Surprise! :)\n";
+    }
+
+    public function calledFrom()
+    {
+        echo "Hi, I'm called from: " . static::class . "\n\n";
+    }
+}
+
+class Bar extends Foo {}
+
+final class Baz extends Foo {}
+
+// Can not instantiate Final class
+// class FailClass extends Baz {}
+
+// This throws exception
+// $foo = new Foo();
+
+$bar = new Bar();
+$bar->calledFrom();
+
+$baz = new Baz();
+$baz->calledFrom();
+
+
+abstract class YetAnotherAbstract extends Bar {}

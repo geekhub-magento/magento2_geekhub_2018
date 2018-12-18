@@ -1,0 +1,29 @@
+<?php
+declare(strict_types=1);
+
+namespace e_StaticContext;
+
+class Foo
+{
+    const TEST = 'foo_class_constant';
+
+    public static function getSelfConst($constantName)
+    {
+        return constant("self::{$constantName}");
+    }
+
+    public static function getStaticConst($constantName)
+    {
+        return constant("static::{$constantName}");
+    }
+}
+
+class Bar extends Foo
+{
+    const TEST = 'bar_class_constant';
+}
+
+echo 'Constant value: ' . Foo::getSelfConst('TEST') . "\n";
+echo 'Constant value: ' . Foo::getStaticConst('TEST') . "\n";
+echo 'Constant value: ' . Bar::getSelfConst('TEST') . "\n";
+echo 'Constant value: ' . Bar::getStaticConst('TEST') . "\n";

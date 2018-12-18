@@ -1,0 +1,56 @@
+<?php
+declare(strict_types=1);
+
+namespace h_CallProtected;
+
+abstract class Foo
+{
+    public function publicMethod()
+    {
+        echo "Public method called\n";
+    }
+
+    protected function callProtected()
+    {
+        echo "Hi, I'm called from: " . static::class . "\n\n";
+    }
+
+    private function callPrivate()
+    {
+        return 'Test';
+    }
+}
+
+class Bar extends Foo
+{
+
+}
+
+class Baz extends Foo
+{
+    public function publicMethod($object = null)
+    {
+        if ($object) {
+            $this->callProtected($object);
+        } else {
+            parent::publicMethod();
+        }
+    }
+
+    protected function callProtected(Foo $object = null)
+    {
+        if ($object) {
+            $object->callProtected();
+        } else {
+            parent::callProtected();
+        }
+    }
+}
+
+$bar = new Bar();
+$bar->publicMethod();
+// This will fail because can not call protected methods from outside the class
+// $bar->callProtected();
+
+$baz = new Baz();
+$baz->publicMethod($bar);
