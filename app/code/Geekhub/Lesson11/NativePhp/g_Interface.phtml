@@ -11,7 +11,7 @@ interface Foo
     public function returnSomeBool(): bool;
 }
 
-abstract class Bar {}
+abstract class Bar implements Foo {}
 
 class Baz extends Bar
 {
