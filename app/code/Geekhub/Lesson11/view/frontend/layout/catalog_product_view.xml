@@ -6,9 +6,9 @@
             <block class="Magento\Catalog\Block\Product\View"
                    name="banner.block"
                    template="Geekhub_Lesson11::product/view/banner.phtml" after="-">
-                <!--<arguments>-->
-                    <!--<argument name="helperData" xsi:type="object">Geekhub_Lesson11\Helper\Data</argument>-->
-                <!--</arguments>-->
+                <arguments>
+                    <argument name="helper_banner" xsi:type="object">Geekhub\Lesson11\Helper\Data</argument>
+                </arguments>
             </block>
         </referenceContainer>
     </body>
