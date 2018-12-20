@@ -1,0 +1,10 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="\Geekhub\Lesson11\Model\Feedback" shared="true">
+        <arguments>
+            <argument name="name" xsi:type="string">Unnamed</argument>
+            <argument name="email" xsi:type="string">unnamed@unnamed.com</argument>
+            <argument name="phoneNumber" xsi:type="string">123123</argument>
+            <argument name="comment" xsi:type="string">No comments</argument>
+        </arguments>
+    </type>
+</config>
