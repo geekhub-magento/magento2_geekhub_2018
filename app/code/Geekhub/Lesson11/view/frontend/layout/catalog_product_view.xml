@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.main">
+            <block class="Magento\Catalog\Block\Product\View"
+                   name="banner.block"
+                   template="Geekhub_Lesson11::product/view/banner.phtml" after="-">
+                <arguments>
+                    <argument name="helper_banner" xsi:type="object">Geekhub\Lesson11\Helper\Data</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
