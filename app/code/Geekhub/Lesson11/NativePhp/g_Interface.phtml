@@ -1,0 +1,28 @@
+<?php
+declare(strict_types=1);
+
+namespace g_Interface;
+
+interface Foo
+{
+    /**
+     * @return bool
+     */
+    public function returnSomeBool(): bool;
+}
+
+abstract class Bar implements Foo {}
+
+class Baz extends Bar
+{
+    /**
+     * @return bool
+     */
+    public function returnSomeBool(): bool
+    {
+        return (bool) rand(0, 1);
+    }
+}
+
+$baz = new Baz();
+$baz->returnSomeBool();

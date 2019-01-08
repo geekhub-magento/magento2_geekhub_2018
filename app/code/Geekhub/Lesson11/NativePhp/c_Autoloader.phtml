@@ -1,0 +1,21 @@
+<?php
+declare(strict_types=1);
+
+function autoload($class)
+{
+    $classFile = explode('\\', $class)[0];
+    require_once "$classFile.phtml";
+}
+
+spl_autoload_register('autoload');
+
+use a_Class\Foo;
+use b_Namespace\Bar;
+
+echo "Use does not mean that the files are loaded!\n";
+
+$foo = new Foo();
+$foo->whoAmI();
+
+$bar = new Bar();
+$bar->whoAmI();

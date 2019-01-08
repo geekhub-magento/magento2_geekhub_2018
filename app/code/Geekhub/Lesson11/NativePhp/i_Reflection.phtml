@@ -1,0 +1,90 @@
+<?php
+declare(strict_types=1);
+
+namespace i_Reflection;
+
+class SequenceGenerator
+{
+    /**
+     * @param int $min
+     * @param int $max
+     * @return \Generator
+     */
+    public function generateSequence($min, $max)
+    {
+        while ($min <= $max) {
+            yield $min;
+            $min++;
+        }
+    }
+}
+
+class TraversableClass implements \IteratorAggregate, \Countable
+{
+    /**
+     * @var SequenceGenerator $generator
+     */
+    private $generator;
+
+    /**
+     * @var int $min
+     */
+    private $min;
+
+    /**
+     * @var int $max
+     */
+    private $max;
+
+    /**
+     * TraversableClass constructor.
+     * @param SequenceGenerator $generator
+     * @param int $min
+     * @param int $max
+     */
+    public function __construct(
+        SequenceGenerator $generator,
+        $min,
+        $max
+    ) {
+        $this->generator = $generator;
+        $this->min = $min;
+        $this->max = $max;
+    }
+
+    /**
+     * @return \ArrayIterator|\Traversable
+     */
+    public function getIterator()
+    {
+        // return new \ArrayIterator([5, 6, 7, 8, 9, 10]);
+        return $this->generator->generateSequence($this->min, $this->max);
+    }
+
+    /**
+     * Will not work as expected, because we're dealing with generators and count will be 1
+     * @return int
+     */
+    public function count()
+    {
+        return count($this->getIterator());
+    }
+}
+
+$generator = new SequenceGenerator();
+$traversableClass = new TraversableClass($generator, 5, 10);
+
+foreach ($traversableClass as $integer) {
+    echo "Current integer value: $integer\n";
+}
+
+$numberOfElements = count($traversableClass);
+echo "Number of elements: $numberOfElements\n";
+
+$reflection = new \ReflectionClass($traversableClass);
+$constructor = $reflection->getConstructor();
+echo "\n{$constructor->getDocComment()}\n\n";
+
+foreach ($constructor->getParameters() as $parameter) {
+    echo "Parameter `{$parameter->getName()}` has type: {$parameter->getType()}\n";
+}

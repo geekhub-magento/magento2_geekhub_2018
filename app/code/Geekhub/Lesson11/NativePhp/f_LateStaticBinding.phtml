@@ -1,0 +1,41 @@
+<?php
+declare(strict_types=1);
+
+namespace f_LateStaticBinding;
+
+abstract class Foo
+{
+    private static $staticProperty = 'Just a static property';
+
+    public function getStaticProperty()
+    {
+        return self::$staticProperty;
+    }
+
+    public function setStaticProperty($newStaticProperty)
+    {
+        self::$staticProperty = $newStaticProperty;
+        return $this;
+    }
+
+    public function echoValue()
+    {
+        echo self::$staticProperty . "\n";
+    }
+}
+
+class Bar extends Foo {}
+
+class Baz extends Foo {}
+
+$bar = new Bar();
+$bar->echoValue();
+$bar->setStaticProperty('New value')
+    ->echoValue();
+
+$baz = new Baz();
+$baz->echoValue();
+
+$baz->setStaticProperty('New value set by $baz')
+    ->echoValue();
+$baz->echoValue();

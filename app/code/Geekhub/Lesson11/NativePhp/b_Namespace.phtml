@@ -1,0 +1,30 @@
+<?php
+declare(strict_types=1);
+
+namespace b_Namespace;
+
+require_once 'a_Class.phtml';
+
+// This is a class - just a code template
+use a_Class\Foo;
+
+class Bar
+{
+    public function whoAmI()
+    {
+        echo sprintf('Hi, i\'m %s', self::class) . "\n";
+    }
+}
+
+echo "\nWe're in the Bar class file\n\n";
+
+// This is object
+$bar = new Bar();
+$bar->whoAmI();
+echo 'Object hash: ' . spl_object_hash($bar) . "\n\n";
+
+
+$foo1 = new Foo();
+$foo1->whoAmI();
+$foo2 = new \a_Class\Foo();
+$foo2->whoAmI();
