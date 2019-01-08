@@ -10,7 +10,7 @@ class SequenceGenerator
      * @param int $max
      * @return \Generator
      */
-    public function generateSequence($min, $max)
+    public function generateSequence($min, $max): \Generator
     {
         while ($min <= $max) {
             yield $min;
@@ -44,8 +44,8 @@ class TraversableClass implements \IteratorAggregate, \Countable
      */
     public function __construct(
         SequenceGenerator $generator,
-        $min,
-        $max
+        int $min,
+        int $max
     ) {
         $this->generator = $generator;
         $this->min = $min;

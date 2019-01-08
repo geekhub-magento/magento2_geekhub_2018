@@ -15,10 +15,10 @@ abstract class Foo
         echo "Hi, I'm called from: " . static::class . "\n\n";
     }
 
-    private function callPrivate()
-    {
-        return 'Test';
-    }
+//    private function callPrivate()
+//    {
+//        return 'Test';
+//    }
 }
 
 class Bar extends Foo
@@ -28,21 +28,12 @@ class Bar extends Foo
 
 class Baz extends Foo
 {
-    public function publicMethod($object = null)
-    {
-        if ($object) {
-            $this->callProtected($object);
-        } else {
-            parent::publicMethod();
-        }
-    }
-
-    protected function callProtected(Foo $object = null)
+    public function publicMethod(Bar $object = null)
     {
         if ($object) {
             $object->callProtected();
         } else {
-            parent::callProtected();
+            parent::publicMethod();
         }
     }
 }

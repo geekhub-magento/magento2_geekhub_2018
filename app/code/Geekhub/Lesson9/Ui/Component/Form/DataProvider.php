@@ -26,8 +26,7 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
     protected $pool;
 
     /**
-     * Constructor
-     *
+     * DataProvider constructor.
      * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName
@@ -37,9 +36,9 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
      * @param array $data
      */
     public function __construct(
-        $name,
-        $primaryFieldName,
-        $requestFieldName,
+        string $name,
+        string $primaryFieldName,
+        string $requestFieldName,
         CollectionFactory $blockCollectionFactory,
         PoolInterface $pool,
         array $meta = [],

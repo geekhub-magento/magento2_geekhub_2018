@@ -11,9 +11,7 @@ interface Foo
     public function returnSomeBool(): bool;
 }
 
-abstract class Bar implements Foo {}
-
-class Baz extends Bar
+abstract class Bar implements Foo
 {
     /**
      * @return bool
@@ -22,6 +20,11 @@ class Baz extends Bar
     {
         return (bool) rand(0, 1);
     }
+}
+
+class Baz extends Bar
+{
+
 }
 
 $baz = new Baz();
