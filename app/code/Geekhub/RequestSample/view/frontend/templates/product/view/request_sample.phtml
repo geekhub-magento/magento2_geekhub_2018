@@ -1,5 +1,7 @@
 <?php /** @var $block \Magento\Catalog\Block\Product\View */ ?>
-<?php $imageObject = $block->getImage($block->getProduct(), 'product_base_image'); ?>
+<?php $product = $block->getProduct();
+    $imageObject = $block->getImage($product, 'product_base_image');
+?>
 <div class="catalog-product-view-tab-request-sample-form">
     <h2><?= $block->escapeHtml(__('Request a Sample Form')) ?></h2>
     <div>
@@ -50,13 +52,13 @@
                         />
                     </div>
                 </div>
-                <div class="field telephone">
-                    <label class="label" for="telephone">
+                <div class="field phone">
+                    <label class="label" for="phone">
                         <span><?= $block->escapeHtml(__('Phone Number')) ?></span>
                     </label>
                     <div class="control">
-                        <input name="telephone"
-                               id="telephone"
+                        <input name="phone"
+                               id="phone"
                                title="<?= $block->escapeHtmlAttr(__('Phone Number')) ?>"
                                class="input-text"
                                type="text"
@@ -64,12 +66,12 @@
                     </div>
                 </div>
                 <div class="field comment required">
-                    <label class="label" for="comment">
+                    <label class="label" for="request">
                         <span><?= $block->escapeHtml(__('What’s on your mind?')) ?></span>
                     </label>
                     <div class="control">
-                        <textarea name="comment"
-                                  id="comment"
+                        <textarea name="request"
+                                  id="request"
                                   title="<?= $block->escapeHtmlAttr(__('What’s on your mind?')) ?>"
                                   class="input-text"
                                   cols="5" rows="3"
@@ -80,6 +82,8 @@
             </fieldset>
             <div class="actions-toolbar">
                 <div class="primary">
+                    <input type="hidden" name="sku" value="<?= $block->escapeHtml($product->getSku()) ?>"/>
+                    <input type="hidden" name="product_name" value="<?= $block->escapeHtml($product->getName()) ?>"/>
                     <input type="hidden" name="hideit" id="hideit" value=""/>
                     <button type="submit" title="<?= $block->escapeHtmlAttr(__('Submit')) ?>" class="action submit primary">
                         <span><?= $block->escapeHtml(__('Submit')) ?></span>

@@ -30,6 +30,8 @@ class UpgradeData implements UpgradeDataInterface
     public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
         if (version_compare($context->getVersion(), '1.0.2', '<')) {
+            $statuses = [RequestSample::STATUS_PENDING, RequestSample::STATUS_PROCESSED];
+
             for ($i = 1; $i <= 5; $i++) {
                 /** @var RequestSample $requestSample */
                 $requestSample = $this->requestSampleFactory->create();
@@ -39,7 +41,7 @@ class UpgradeData implements UpgradeDataInterface
                     ->setProductName("Product #$i")
                     ->setSku("product_sku_$i")
                     ->setRequest('Just a test request')
-                    ->setStatus(array_rand([RequestSample::STATUS_PENDING, RequestSample::STATUS_PROCESSED]))
+                    ->setStatus($statuses[array_rand($statuses)])
                     ->setStoreId(Store::DISTRO_STORE_ID);
                 $requestSample->save();
             }
