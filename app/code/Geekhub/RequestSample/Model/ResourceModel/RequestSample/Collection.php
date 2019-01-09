@@ -4,6 +4,9 @@ namespace Geekhub\RequestSample\Model\ResourceModel\RequestSample;
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
+    /**
+     * @inheritdoc
+     */
     protected function _construct()
     {
         $this->_init(
