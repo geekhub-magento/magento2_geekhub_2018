@@ -1,0 +1,12 @@
+<?php /** @var \Geekhub\RequestSample\Block\Requests $block */
+    $sampleRequests = $block->getSampleRequests();
+?>
+<?php if ($sampleRequests->count()): ?>
+    <ul>
+        <?php /** @var \Geekhub\RequestSample\Model\RequestSample $sampleRequest */
+            foreach ($sampleRequests as $sampleRequest):
+        ?>
+            <li><?= __('Requested by %1', $sampleRequest->getName()) ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>

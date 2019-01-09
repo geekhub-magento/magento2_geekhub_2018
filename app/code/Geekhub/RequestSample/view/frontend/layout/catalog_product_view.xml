@@ -12,6 +12,14 @@
                 <arguments>
                     <argument translate="true" name="title" xsi:type="string">Request a Sample</argument>
                 </arguments>
+                <block class="Geekhub\RequestSample\Block\Requests"
+                       name="request.list"
+                       template="Geekhub_RequestSample::product/view/requests_list.phtml"
+                >
+                    <arguments>
+                        <argument name="limit" xsi:type="number">5</argument>
+                    </arguments>
+                </block>
             </block>
         </referenceBlock>
     </body>

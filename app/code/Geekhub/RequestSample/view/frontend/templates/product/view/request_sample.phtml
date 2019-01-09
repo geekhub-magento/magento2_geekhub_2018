@@ -1,4 +1,4 @@
-<?php /** @var $block \Magento\Catalog\Block\Product\View */ ?>
+<?php /** @var \Magento\Catalog\Block\Product\View $block */ ?>
 <?php $product = $block->getProduct();
     $imageObject = $block->getImage($product, 'product_base_image');
 ?>
@@ -93,3 +93,4 @@
         </form>
     </div>
 </div>
+<?= $block->getChildHtml('request.list') ?>
