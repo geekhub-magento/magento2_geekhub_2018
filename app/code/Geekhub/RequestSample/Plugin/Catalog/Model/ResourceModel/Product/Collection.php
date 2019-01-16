@@ -17,7 +17,7 @@ class Collection
         // Arguments can be omitted
         $class = get_class($subject);
         // Can optionally modify method arguments here and return them as array
-        return [true, true];
+        // return [true, true];
     }
 
     /**
