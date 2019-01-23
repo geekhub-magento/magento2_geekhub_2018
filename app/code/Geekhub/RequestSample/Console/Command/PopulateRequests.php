@@ -87,37 +87,53 @@ class PopulateRequests extends \Symfony\Component\Console\Command\Command
     public function execute(InputInterface $input, OutputInterface $output)
     {
         try {
-            $this->state->setAreaCode(Area::AREA_ADMINHTML);
-            $count = $input->getArgument('count') ?: self::DEFAULT_COUNT;
-            $i = 0;
-            /** @var Transaction $transaction */
-            $transaction = $this->transactionFactory->create();
-            $this->criteria->setPageSize(100);
-            $products = $this->productRepository->getList($this->criteria)
-                ->getItems();
-
-            while ($i < $count) {
-                ++$i;
-                /** @var ProductInterface $product */
-                $product = $products[array_rand($products)];
-
-                /** @var RequestSample $requestSample */
-                $requestSample = $this->requestSampleFactory->create();
-                $requestSample->setName("Test name $i")
-                    ->setEmail("email-$i@example.com")
-                    ->setPhone('888-88-88')
-                    ->setProductName($product->getName())
-                    ->setSku($product->getSku())
-                    ->setRequest("Lorem upsum #$i");
-
-                $transaction->addObject($requestSample);
-                $output->writeln("<info>Generated item #$i...<info>");
-            }
-
-            $transaction->save();
-            $output->writeln("<info>Completed!<info>");
+            $this->state->emulateAreaCode(
+                Area::AREA_ADMINHTML,
+                [$this, 'generate'],
+                [
+                    $input->getArgument('count') ?: self::DEFAULT_COUNT,
+                    $output
+                ]
+            );
         } catch (\Exception $e) {
             $output->writeln("<error>{$e->getMessage()}<error>");
         }
+    }
+
+    /**
+     * @TODO: tTHIS IS JUST A DEMO! THIS FUNCTION JUST BE MOVED TO A SERVICE!
+     * @param int $count
+     * @param OutputInterface $output
+     * @throws \Exception
+     */
+    public function generate(int $count, OutputInterface $output)
+    {
+        $i = 0;
+        /** @var Transaction $transaction */
+        $transaction = $this->transactionFactory->create();
+        $this->criteria->setPageSize(100);
+        $products = $this->productRepository->getList($this->criteria)
+            ->getItems();
+
+        while ($i < $count) {
+            ++$i;
+            /** @var ProductInterface $product */
+            $product = $products[array_rand($products)];
+
+            /** @var RequestSample $requestSample */
+            $requestSample = $this->requestSampleFactory->create();
+            $requestSample->setName("Test name $i")
+                ->setEmail("email-$i@example.com")
+                ->setPhone('888-88-88')
+                ->setProductName($product->getName())
+                ->setSku($product->getSku())
+                ->setRequest("Lorem upsum #$i");
+
+            $transaction->addObject($requestSample);
+            $output->writeln("<info>Generated item #$i...<info>");
+        }
+
+        $transaction->save();
+        $output->writeln("<info>Completed!<info>");
     }
 }
