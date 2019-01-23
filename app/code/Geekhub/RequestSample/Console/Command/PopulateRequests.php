@@ -15,7 +15,7 @@ class PopulateRequests extends \Symfony\Component\Console\Command\Command
     const DEFAULT_COUNT = 20;
 
     /**
-     * @var \Magento\Catalog\Model\ProductRepository
+     * @var \Magento\Catalog\Model\ProductRepository\Proxy
      */
     private $productRepository;
 
@@ -41,7 +41,7 @@ class PopulateRequests extends \Symfony\Component\Console\Command\Command
 
     /**
      * PopulateRequests constructor.
-     * @param \Magento\Catalog\Model\ProductRepository $productRepository
+     * @param \Magento\Catalog\Model\ProductRepository\Proxy $productRepository
      * @param \Magento\Framework\Api\SearchCriteria $criteria
      * @param \Geekhub\RequestSample\Model\RequestSampleFactory $requestSampleFactory
      * @param \Magento\Framework\DB\TransactionFactory $transactionFactory
@@ -49,7 +49,7 @@ class PopulateRequests extends \Symfony\Component\Console\Command\Command
      * @param string|null $name
      */
     public function __construct(
-        \Magento\Catalog\Model\ProductRepository $productRepository,
+        \Magento\Catalog\Model\ProductRepository\Proxy $productRepository,
         \Magento\Framework\Api\SearchCriteria $criteria,
         \Geekhub\RequestSample\Model\RequestSampleFactory $requestSampleFactory,
         \Magento\Framework\DB\TransactionFactory $transactionFactory,
