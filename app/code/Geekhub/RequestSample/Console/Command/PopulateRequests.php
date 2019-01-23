@@ -5,34 +5,16 @@ namespace Geekhub\RequestSample\Console\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
-use Magento\Framework\DB\Transaction;
 use Magento\Framework\App\Area;
-use Magento\Catalog\Api\Data\ProductInterface;
-use Geekhub\RequestSample\Model\RequestSample;
 
 class PopulateRequests extends \Symfony\Component\Console\Command\Command
 {
     const DEFAULT_COUNT = 20;
 
     /**
-     * @var \Magento\Catalog\Model\ProductRepository\Proxy
+     * @var \Geekhub\RequestSample\Model\RequestSampleGenerator
      */
-    private $productRepository;
-
-    /**
-     * @var \Magento\Framework\Api\SearchCriteria
-     */
-    private $criteria;
-
-    /**
-     * @var \Geekhub\RequestSample\Model\RequestSampleFactory
-     */
-    private $requestSampleFactory;
-
-    /**
-     * @var \Magento\Framework\DB\TransactionFactory
-     */
-    private $transactionFactory;
+    private $requestSampleGenerator;
 
     /**
      * @var \Magento\Framework\App\State
@@ -41,27 +23,18 @@ class PopulateRequests extends \Symfony\Component\Console\Command\Command
 
     /**
      * PopulateRequests constructor.
-     * @param \Magento\Catalog\Model\ProductRepository\Proxy $productRepository
-     * @param \Magento\Framework\Api\SearchCriteria $criteria
-     * @param \Geekhub\RequestSample\Model\RequestSampleFactory $requestSampleFactory
-     * @param \Magento\Framework\DB\TransactionFactory $transactionFactory
+     * @param \Geekhub\RequestSample\Model\RequestSampleGenerator $requestSampleGenerator
      * @param \Magento\Framework\App\State $state
      * @param string|null $name
      */
     public function __construct(
-        \Magento\Catalog\Model\ProductRepository\Proxy $productRepository,
-        \Magento\Framework\Api\SearchCriteria $criteria,
-        \Geekhub\RequestSample\Model\RequestSampleFactory $requestSampleFactory,
-        \Magento\Framework\DB\TransactionFactory $transactionFactory,
+        \Geekhub\RequestSample\Model\RequestSampleGenerator $requestSampleGenerator,
         \Magento\Framework\App\State $state,
         ?string $name = null
     ) {
         parent::__construct($name);
-        $this->productRepository = $productRepository;
-        $this->criteria = $criteria;
-        $this->requestSampleFactory = $requestSampleFactory;
-        $this->transactionFactory = $transactionFactory;
         $this->state = $state;
+        $this->requestSampleGenerator = $requestSampleGenerator;
     }
 
     /**
@@ -89,51 +62,17 @@ class PopulateRequests extends \Symfony\Component\Console\Command\Command
         try {
             $this->state->emulateAreaCode(
                 Area::AREA_ADMINHTML,
-                [$this, 'generate'],
+                function (int $count) use ($output) {
+                    foreach ($this->requestSampleGenerator->generate($count) as $message) {
+                        $output->writeln("<info>$message</info>");
+                    }
+                },
                 [
-                    $input->getArgument('count') ?: self::DEFAULT_COUNT,
-                    $output
+                    $input->getArgument('count') ?: self::DEFAULT_COUNT
                 ]
             );
         } catch (\Exception $e) {
             $output->writeln("<error>{$e->getMessage()}<error>");
         }
-    }
-
-    /**
-     * @TODO: tTHIS IS JUST A DEMO! THIS FUNCTION JUST BE MOVED TO A SERVICE!
-     * @param int $count
-     * @param OutputInterface $output
-     * @throws \Exception
-     */
-    public function generate(int $count, OutputInterface $output)
-    {
-        $i = 0;
-        /** @var Transaction $transaction */
-        $transaction = $this->transactionFactory->create();
-        $this->criteria->setPageSize(100);
-        $products = $this->productRepository->getList($this->criteria)
-            ->getItems();
-
-        while ($i < $count) {
-            ++$i;
-            /** @var ProductInterface $product */
-            $product = $products[array_rand($products)];
-
-            /** @var RequestSample $requestSample */
-            $requestSample = $this->requestSampleFactory->create();
-            $requestSample->setName("Test name $i")
-                ->setEmail("email-$i@example.com")
-                ->setPhone('888-88-88')
-                ->setProductName($product->getName())
-                ->setSku($product->getSku())
-                ->setRequest("Lorem upsum #$i");
-
-            $transaction->addObject($requestSample);
-            $output->writeln("<info>Generated item #$i...<info>");
-        }
-
-        $transaction->save();
-        $output->writeln("<info>Completed!<info>");
     }
 }
