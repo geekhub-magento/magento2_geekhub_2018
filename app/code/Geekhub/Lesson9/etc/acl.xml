@@ -6,6 +6,9 @@
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Geekhub_Lesson9::cron_job_management" title="Cron Job Managements" translate="title" sortOrder="50" />
+                        <resource id="Magento_Config::config">
+                            <resource id="Geekhub_Lesson9::cron_job_management_settings" title="Cron Job Managements Settings"/>
+                        </resource>
                     </resource>
                 </resource>
             </resource>
