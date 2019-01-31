@@ -64,6 +64,13 @@
                         <field id="enable">1</field>
                     </depends>
                 </field>
+
+                <field id="dynamic_items" translate="label" type="select" sortOrder="19" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Responsive Items</label>
+                    <frontend_model>Geekhub\Lesson9\Block\Adminhtml\Form\Field\DynamicItems</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <comment>Add Responsive Items</comment>
+                </field>
             </group>
         </section>
     </system>
