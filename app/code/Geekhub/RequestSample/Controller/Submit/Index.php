@@ -6,6 +6,7 @@ use Geekhub\RequestSample\Model\RequestSample;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\LocalizedException;
+use Geekhub\RequestSample\Helper\Mail;
 
 class Index extends \Magento\Framework\App\Action\Action
 {
@@ -17,6 +18,7 @@ class Index extends \Magento\Framework\App\Action\Action
      * @var \Magento\Framework\Data\Form\FormKey\Validator
      */
     private $formKeyValidator;
+    private $mailHelper;
 
     /**
      * @var \Geekhub\RequestSample\Model\RequestSampleFactory
@@ -28,15 +30,18 @@ class Index extends \Magento\Framework\App\Action\Action
      * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
      * @param \Geekhub\RequestSample\Model\RequestSampleFactory $requestSampleFactory
      * @param \Magento\Framework\App\Action\Context $context
+     * @param Mail $mailHelper
      */
     public function __construct(
         \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
         \Geekhub\RequestSample\Model\RequestSampleFactory $requestSampleFactory,
-        \Magento\Framework\App\Action\Context $context
+        \Magento\Framework\App\Action\Context $context,
+        Mail $mailHelper
     ) {
         parent::__construct($context);
         $this->formKeyValidator = $formKeyValidator;
         $this->requestSampleFactory = $requestSampleFactory;
+        $this->mailHelper = $mailHelper;
     }
 
     /**
@@ -71,6 +76,16 @@ class Index extends \Magento\Framework\App\Action\Action
                 ->setRequest($request->getParam('request'));
             $requestSample->save();
 
+            /**
+             * Send Email
+             */
+            if ($request->getParam('email')) {
+                $email = $request->getParam('email');
+                $customerName = $request->getParam('name');
+                $message = $request->getParam('request');
+
+                $this->mailHelper->sendMail($email, $customerName, $message);
+            }
             $data = [
                 'status' => self::STATUS_SUCCESS,
                 'message' => 'Your request was submitted. We\'ll get in touch with you as soon as possible.'
