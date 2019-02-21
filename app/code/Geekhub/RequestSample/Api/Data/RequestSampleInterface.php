@@ -1,8 +1,5 @@
 <?php
-/**
- * Copyright © Mageside. All rights reserved.
- * See MS-LICENSE.txt for license details.
- */
+
 namespace Geekhub\RequestSample\Api\Data;
 
 /**

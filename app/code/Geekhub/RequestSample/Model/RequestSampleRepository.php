@@ -1,8 +1,5 @@
 <?php
-/**
- * Copyright © Mageside. All rights reserved.
- * See MS-LICENSE.txt for license details.
- */
+
 namespace Geekhub\RequestSample\Model;
 
 use Magento\Framework\Api\DataObjectHelper;
@@ -11,7 +8,9 @@ use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Reflection\DataObjectProcessor;
-use Geekhub\RequestSample\Api\Data;
+use Geekhub\RequestSample\Api\Data\RequestSampleInterface;
+use Geekhub\RequestSample\Api\Data\RequestSampleInterfaceFactory;
+use Geekhub\RequestSample\Api\Data\RequestSampleSearchResultsInterfaceFactory;
 use Geekhub\RequestSample\Api\RequestSampleRepositoryInterface;
 use Geekhub\RequestSample\Model\ResourceModel\RequestSample as ResourceRequestSample;
 use Geekhub\RequestSample\Model\ResourceModel\RequestSample\CollectionFactory as RequestSampleCollectionFactory;
@@ -38,12 +37,12 @@ class RequestSampleRepository implements RequestSampleRepositoryInterface
     protected $requestSampleCollectionFactory;
 
     /**
-     * @var Data\RequestSampleInterfaceFactory
+     * @var RequestSampleInterfaceFactory
      */
     protected $dataRequestSampleFactory;
 
     /**
-     * @var Data\RequestSampleSearchResultsInterfaceFactory
+     * @var RequestSampleSearchResultsInterfaceFactory
      */
     protected $searchResultsFactory;
 
@@ -61,8 +60,8 @@ class RequestSampleRepository implements RequestSampleRepositoryInterface
      * @param ResourceRequestSample $resource
      * @param RequestSampleFactory $requestSampleFactory
      * @param RequestSampleCollectionFactory $requestSampleCollectionFactory
-     * @param Data\RequestSampleInterfaceFactory $dataRequestSampleFactory
-     * @param Data\RequestSampleSearchResultsInterfaceFactory $searchResultsFactory
+     * @param RequestSampleInterfaceFactory $dataRequestSampleFactory
+     * @param RequestSampleSearchResultsInterfaceFactory $searchResultsFactory
      * @param DataObjectHelper $dataObjectHelper
      * @param DataObjectProcessor $dataObjectProcessor
      */
@@ -70,8 +69,8 @@ class RequestSampleRepository implements RequestSampleRepositoryInterface
         ResourceRequestSample $resource,
         RequestSampleFactory $requestSampleFactory,
         RequestSampleCollectionFactory $requestSampleCollectionFactory,
-        Data\RequestSampleInterfaceFactory $dataRequestSampleFactory,
-        Data\RequestSampleSearchResultsInterfaceFactory $searchResultsFactory,
+        RequestSampleInterfaceFactory $dataRequestSampleFactory,
+        RequestSampleSearchResultsInterfaceFactory $searchResultsFactory,
         DataObjectHelper $dataObjectHelper,
         DataObjectProcessor $dataObjectProcessor
     ) {
@@ -87,11 +86,11 @@ class RequestSampleRepository implements RequestSampleRepositoryInterface
     /**
      * Save RequestSample data
      *
-     * @param Data\RequestSampleInterface $requestSample
-     * @return Data\RequestSampleInterface
+     * @param RequestSampleInterface $requestSample
+     * @return RequestSampleInterface
      * @throws CouldNotSaveException
      */
-    public function save(Data\RequestSampleInterface $requestSample)
+    public function save(RequestSampleInterface $requestSample)
     {
         try {
             $this->resource->save($requestSample);
@@ -105,7 +104,7 @@ class RequestSampleRepository implements RequestSampleRepositoryInterface
      * Load RequestSample data by given RequestSample Identity
      *
      * @param string $requestSampleId
-     * @return Data\RequestSampleInterface
+     * @return RequestSampleInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function getById($requestSampleId)
@@ -171,11 +170,11 @@ class RequestSampleRepository implements RequestSampleRepositoryInterface
     /**
      * Delete RequestSample
      *
-     * @param \Geekhub\RequestSample\Api\Data\RequestSampleInterface $requestSample
+     * @param RequestSampleInterface $requestSample
      * @return bool
      * @throws CouldNotDeleteException
      */
-    public function delete(Data\RequestSampleInterface $requestSample)
+    public function delete(RequestSampleInterface $requestSample)
     {
         try {
             $this->resource->delete($requestSample);

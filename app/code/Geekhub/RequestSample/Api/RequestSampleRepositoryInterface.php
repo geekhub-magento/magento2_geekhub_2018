@@ -1,8 +1,5 @@
 <?php
-/**
- * Copyright © Mageside. All rights reserved.
- * See MS-LICENSE.txt for license details.
- */
+
 namespace Geekhub\RequestSample\Api;
 
 use Magento\Framework\Api\SearchCriteriaInterface;
@@ -16,17 +13,17 @@ interface RequestSampleRepositoryInterface
     /**
      * Save request sample.
      *
-     * @param Data\RequestSampleInterface $requestSample
-     * @return Data\RequestSampleInterface
+     * @param \Geekhub\RequestSample\Api\Data\RequestSampleInterface $requestSample
+     * @return \Geekhub\RequestSample\Api\Data\RequestSampleInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function save(Data\RequestSampleInterface $requestSample);
+    public function save(\Geekhub\RequestSample\Api\Data\RequestSampleInterface $requestSample);
 
     /**
      * Retrieve request sample.
      *
      * @param int $requestSampleId
-     * @return Data\RequestSampleInterface
+     * @return \Geekhub\RequestSample\Api\Data\RequestSampleInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getById($requestSampleId);
@@ -35,7 +32,7 @@ interface RequestSampleRepositoryInterface
      * Retrieve request samples matching the specified criteria.
      *
      * @param SearchCriteriaInterface $searchCriteria
-     * @return Data\RequestSampleSearchResultsInterface
+     * @return \Geekhub\RequestSample\Api\Data\RequestSampleSearchResultsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getList(SearchCriteriaInterface $searchCriteria);
@@ -43,11 +40,11 @@ interface RequestSampleRepositoryInterface
     /**
      * Delete request sample.
      *
-     * @param Data\RequestSampleInterface $requestSample
+     * @param \Geekhub\RequestSample\Api\Data\RequestSampleInterface $requestSample
      * @return bool true on success
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function delete(Data\RequestSampleInterface $requestSample);
+    public function delete(\Geekhub\RequestSample\Api\Data\RequestSampleInterface $requestSample);
 
     /**
      * Delete request sample by ID.

@@ -2,7 +2,8 @@
 
 namespace Geekhub\RequestSample\Controller\Submit;
 
-use Geekhub\RequestSample\Model\RequestSample;
+use Geekhub\RequestSample\Api\Data\RequestSampleInterface;
+use Geekhub\RequestSample\Api\RequestSampleRepositoryInterface;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\LocalizedException;
@@ -24,19 +25,27 @@ class Index extends \Magento\Framework\App\Action\Action
     private $requestSampleFactory;
 
     /**
+     * @var RequestSampleRepositoryInterface
+     */
+    private $requestSampleRepository;
+
+    /**
      * Index constructor.
      * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
      * @param \Geekhub\RequestSample\Model\RequestSampleFactory $requestSampleFactory
+     * @param RequestSampleRepositoryInterface $requestSampleRepository
      * @param \Magento\Framework\App\Action\Context $context
      */
     public function __construct(
         \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
         \Geekhub\RequestSample\Model\RequestSampleFactory $requestSampleFactory,
+        RequestSampleRepositoryInterface $requestSampleRepository,
         \Magento\Framework\App\Action\Context $context
     ) {
         parent::__construct($context);
         $this->formKeyValidator = $formKeyValidator;
         $this->requestSampleFactory = $requestSampleFactory;
+        $this->requestSampleRepository = $requestSampleRepository;
     }
 
     /**
@@ -61,7 +70,7 @@ class Index extends \Magento\Framework\App\Action\Action
             // Here we must also process backend validation or all form fields.
             // Otherwise attackers can just copy our page, remove fields validation and send anything they want
 
-            /** @var RequestSample $requestSample */
+            /** @var RequestSampleInterface $requestSample */
             $requestSample = $this->requestSampleFactory->create();
             $requestSample->setName($request->getParam('name'))
                 ->setEmail($request->getParam('email'))
@@ -69,7 +78,8 @@ class Index extends \Magento\Framework\App\Action\Action
                 ->setProductName($request->getParam('product_name'))
                 ->setSku($request->getParam('sku'))
                 ->setRequest($request->getParam('request'));
-            $requestSample->save();
+
+            $this->requestSampleRepository->save($requestSample);
 
             $data = [
                 'status' => self::STATUS_SUCCESS,

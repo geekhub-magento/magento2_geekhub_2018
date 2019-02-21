@@ -28,6 +28,7 @@ class Requests extends \Magento\Framework\View\Element\Template
 
     /**
      * @return Collection
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function getSampleRequests(): Collection
     {

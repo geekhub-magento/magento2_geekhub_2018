@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Request Sample -->
+    <route url="/V1/requestSample/:requestSampleId" method="GET">
+        <service class="Geekhub\RequestSample\Api\RequestSampleRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/requestSample/:requestSampleId" method="GET">
+        <service class="Geekhub\RequestSample\Api\RequestSampleRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="Geekhub_RequestSample::manage"/>
+        </resources>
+    </route>
+    <route url="/V1/requestSample/search" method="GET">
+        <service class="Geekhub\RequestSample\Api\RequestSampleRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Geekhub_RequestSample::manage"/>
+        </resources>
+    </route>
+    <route url="/V1/requestSample" method="POST">
+        <service class="Geekhub\RequestSample\Api\RequestSampleRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Geekhub_RequestSample::manage"/>
+        </resources>
+    </route>
+    <route url="/V1/requestSample/:id" method="PUT">
+        <service class="Geekhub\RequestSample\Api\RequestSampleRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Geekhub_RequestSample::manage"/>
+        </resources>
+    </route>
+    <route url="/V1/requestSample/:requestSampleId" method="DELETE">
+        <service class="Geekhub\RequestSample\Api\RequestSampleRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Geekhub_RequestSample::manage"/>
+        </resources>
+    </route>
+</routes>
