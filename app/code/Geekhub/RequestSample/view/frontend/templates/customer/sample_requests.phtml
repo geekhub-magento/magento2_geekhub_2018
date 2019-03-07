@@ -1,0 +1,19 @@
+<?php /** @var Geekhub\RequestSample\Block\Requests $block */ ?>
+<?php /** @var Magento\Framework\View\TemplateEngine\Php $this */ ?>
+<table>
+    <tr>
+        <th><?php echo __('Date'); ?></th>
+        <th><?php echo __('Request'); ?></th>
+        <th><?php echo __('Product'); ?></th>
+        <th><?php echo __('Status'); ?></th>
+    </tr>
+
+<?php foreach($block->getSampleRequests() as $sampleRequest): ?>
+    <tr>
+        <td><?php echo $this->escapeHtml($sampleRequest->getCreatedAt()) ?></td>
+        <td><?php echo $this->escapeHtml($sampleRequest->getRequest()) ?></td>
+        <td><?php echo $this->escapeHtml($sampleRequest->getProductName()) ?></td>
+        <td><?php echo $this->escapeHtml($sampleRequest->getStatus()) ?></td>
+    </tr>
+<?php endforeach; ?>
+</table>
