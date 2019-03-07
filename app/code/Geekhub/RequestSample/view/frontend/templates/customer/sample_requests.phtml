@@ -8,7 +8,7 @@
         <th><?php echo __('Status'); ?></th>
     </tr>
 
-<?php foreach($block->getSampleRequests() as $sampleRequest): ?>
+<?php foreach($block->getMySampleRequests() as $sampleRequest): ?>
     <tr>
         <td><?php echo $this->escapeHtml($sampleRequest->getCreatedAt()) ?></td>
         <td><?php echo $this->escapeHtml($sampleRequest->getRequest()) ?></td>

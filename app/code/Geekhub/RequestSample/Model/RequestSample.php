@@ -203,6 +203,22 @@ class RequestSample
     }
 
     /**
+     * @return int
+     */
+    public function getCustomerId():int
+    {
+        return (int) $this->getData('customer_id');
+    }
+
+    /**
+     * @param int $customerId
+     */
+    public function setCustomerId($customerId)
+    {
+        $this->setData('customer_id', $customerId);
+    }
+
+    /**
      * @return \Magento\Framework\Model\AbstractModel
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */

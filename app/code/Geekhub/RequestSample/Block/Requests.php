@@ -3,6 +3,7 @@
 namespace Geekhub\RequestSample\Block;
 
 use Geekhub\RequestSample\Model\ResourceModel\RequestSample\Collection;
+use Magento\Framework\Exception\LocalizedException;
 
 class Requests extends \Magento\Framework\View\Element\Template
 {
@@ -52,8 +53,8 @@ class Requests extends \Magento\Framework\View\Element\Template
 
     private function getSampleRequestsByCustomer(\Magento\Customer\Model\Customer $customer): Collection
     {
-        if (!$customer) {
-            throwException('No customer has been found!');
+        if (!$customer->getId()) {
+            throw new LocalizedException(__('No customer has been found!'));
         }
 
         /** @var Collection $collection */
@@ -62,7 +63,7 @@ class Requests extends \Magento\Framework\View\Element\Template
             ->getSelect()
             ->orderRand();
 
-        $collection->addFieldToFilter('customer', ['eq' => $customer->getId()]);
+        $collection->addFieldToFilter('customer_id', ['eq' => $customer->getId()]);
 
         $limit = $this->getData('limit') ?: self::CUSTOMERS_LIMIT;
         $collection->setPageSize($limit);

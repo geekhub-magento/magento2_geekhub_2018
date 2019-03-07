@@ -121,14 +121,19 @@ class UpgradeSchema implements UpgradeSchemaInterface
                 );
 
                 // @todo forein key failed, fix
-                $connection ->addForeignKey(
-                    $setup->getFkName($tableName, 'customer_id', 'customer_entity', 'entity_id'),
-                    $tableName,
-                    'customer_id',
-                    $setup->getTable('customer_entity'),
-                    'entity_id',
-                    \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
-                );
+//                $connection ->addForeignKey(
+//                    $setup->getFkName(
+//                        $tableName,
+//                        'customer_id',
+//                        'customer_entity',
+//                        'entity_id'
+//                    ),
+//                    $tableName,
+//                    'customer_id',
+//                    $setup->getTable('customer_entity'),
+//                    'entity_id',
+//                    \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
+//                );
             }
         }
 

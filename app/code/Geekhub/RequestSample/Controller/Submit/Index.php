@@ -77,7 +77,8 @@ class Index extends \Magento\Framework\App\Action\Action
                 ->setPhone($request->getParam('phone'))
                 ->setProductName($request->getParam('product_name'))
                 ->setSku($request->getParam('sku'))
-                ->setRequest($request->getParam('request'));
+                ->setRequest($request->getParam('request'))
+                ->setCustomerId($request->getParam('customer_id'));
 
             $this->requestSampleRepository->save($requestSample);
 

@@ -150,4 +150,18 @@ interface RequestSampleInterface
      */
     public function setStoreId($storeId);
 
+    /**
+     * Get customer ID
+     *
+     * @return int
+     */
+    public function getCustomerId(): int;
+
+    /**
+     * Set store ID
+     *
+     * @param int $customerId
+     * @return RequestSampleInterface
+     */
+    public function setCustomerId($customerId);
 }
