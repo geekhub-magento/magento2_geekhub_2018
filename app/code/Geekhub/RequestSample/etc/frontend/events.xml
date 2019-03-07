@@ -11,4 +11,7 @@
                   instance="Geekhub\RequestSample\Observer\Catalog\Model\Product\LoadAfter"
         />
     </event>
+    <event name="layout_generate_blocks_after">
+        <observer name="load_request_quote_handler" instance="Geekhub\RequestSample\Observer\LayoutGenerateBlocksAfter" />
+    </event>
 </config>
