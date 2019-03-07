@@ -103,6 +103,35 @@ class UpgradeSchema implements UpgradeSchemaInterface
             $installer->getConnection()->createTable($table);
         }
 
+        if (version_compare($context->getVersion(), '1.0.5', '<')) {
+            /**
+             * Add column 'Customer id to 'geekhub_request_sample'
+             */
+            $tableName = $setup->getTable('geekhub_request_sample');
+            if ($setup->getConnection()->isTableExists($tableName) === true) {
+                $connection = $setup->getConnection();
+                $connection->addColumn(
+                    $tableName,
+                    'customer_id',
+                    [
+                        'type' => \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+                        'nullable' => true,
+                        'comment' => 'Customer ID',
+                    ]
+                );
+
+                // @todo forein key failed, fix
+                $connection ->addForeignKey(
+                    $setup->getFkName($tableName, 'customer_id', 'customer_entity', 'entity_id'),
+                    $tableName,
+                    'customer_id',
+                    $setup->getTable('customer_entity'),
+                    'entity_id',
+                    \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
+                );
+            }
+        }
+
         $installer->endSetup();
     }
 }
