@@ -80,6 +80,7 @@
                     </div>
                 </div>
             </fieldset>
+            <input type="hidden" name="customer_id" value="<?php echo $block->getCurrentCustomerId(); ?>" />
             <div class="actions-toolbar">
                 <div class="primary">
                     <input type="hidden" name="sku" value="<?= $block->escapeHtml($product->getSku()) ?>"/>
