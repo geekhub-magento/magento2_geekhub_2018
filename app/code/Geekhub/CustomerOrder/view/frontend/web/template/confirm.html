@@ -1,0 +1,7 @@
+<li id="confirm" data-bind="visible: isVisible">
+    <div>confirm</div>
+    <each args="data: elems, as: 'element'">
+        <render if="hasTemplate()"/>
+    </each>
+    <a href="#" data-bind="click: submitAction">Submit</a>
+</li>

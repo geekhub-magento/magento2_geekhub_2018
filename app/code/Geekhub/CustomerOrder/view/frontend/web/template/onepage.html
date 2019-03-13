@@ -1,0 +1,10 @@
+<!-- ko foreach: getRegion('progressBar') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->
+<div class="opc-wrapper">
+    <ol class="opc" id="checkoutSteps">
+        <!-- ko foreach: getRegion('steps') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+    </ol>
+</div>

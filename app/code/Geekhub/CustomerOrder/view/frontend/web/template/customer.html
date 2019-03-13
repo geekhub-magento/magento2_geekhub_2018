@@ -1,0 +1,32 @@
+<li id="customer" data-bind="visible: isVisible">
+    <h3>Customers</h3>
+    <div>
+        <span translate="'Search'"/><span>
+        <input data-bind="value:request"></span>
+    </div>
+    <if args="customers().length">
+        <div>
+            <span>ID</span>
+            <span>First Name</span>
+            <span>Last Name</span>
+            <span>Email</span>
+            <span>Select</span>
+        </div>
+        <each args="data: customers, as: 'customer'">
+            <div>
+                <span data-bind="html: customer.id"/>
+                <span text="customer.firstName"/>
+                <span text="customer.lastName"/>
+                <span text="customer.email"/>
+                <span data-bind="click: function() { $parent.chooseCustomer(customer) }">Choose Customer</span>
+            </div>
+        </each>
+
+        <a href="#" data-bind="click: nextAction">Next</a>
+
+    </if>
+    <ifnot args="customers().length">
+        <div translate="'Sorry, no customers found.'"/>
+        <div data-bind="i18n: 'i18n Test'"/>
+    </ifnot>
+</li>

@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="checkout" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Geekhub\CustomerOrder\Block\Onepage"
+                   name="geekhub.root"
+                   template="Geekhub_CustomerOrder::onepage.phtml"
+                   cacheable="false">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="onepageScope" xsi:type="array">
+                                <item name="component" xsi:type="string">uiComponent</item>
+                                <item name="config" xsi:type="array">
+                                    <item name="template" xsi:type="string">Geekhub_CustomerOrder/onepage</item>
+                                </item>
+                                <item name="children" xsi:type="array">
+                                    <item name="progressBar" xsi:type="array">
+                                        <item name="sortOrder" xsi:type="string">0</item>
+                                        <item name="component" xsi:type="string">Magento_Checkout/js/view/progress-bar</item>
+                                        <item name="displayArea" xsi:type="string">progressBar</item>
+                                        <item name="config" xsi:type="array">
+                                            <item name="deps" xsi:type="array">
+                                                <item name="0" xsi:type="string">onepageScope.steps.customer-step</item>
+                                                <item name="1" xsi:type="string">onepageScope.steps.product-step</item>
+                                                <item name="2" xsi:type="string">onepageScope.steps.confirm-step</item>
+                                                <item name="3" xsi:type="string">onepageScope.steps.success-step</item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                    <item name="steps" xsi:type="array">
+                                        <item name="component" xsi:type="string">uiComponent</item>
+                                        <item name="displayArea" xsi:type="string">steps</item>
+                                        <item name="children" xsi:type="array">
+                                            <item name="customer-step" xsi:type="array">
+                                                <item name="component" xsi:type="string">Geekhub_CustomerOrder/js/view/customer</item>
+                                                <item name="sortOrder" xsi:type="string">1</item>
+                                                <item name="config" xsi:type="array">
+                                                    <item name="template" xsi:type="string">Geekhub_CustomerOrder/customer</item>
+                                                </item>
+                                            </item>
+                                            <item name="product-step" xsi:type="array">
+                                                <item name="component" xsi:type="string">Geekhub_CustomerOrder/js/view/product</item>
+                                                <item name="sortOrder" xsi:type="string">2</item>
+                                                <item name="config" xsi:type="array">
+                                                    <item name="template" xsi:type="string">Geekhub_CustomerOrder/product</item>
+                                                </item>
+                                            </item>
+                                            <item name="confirm-step" xsi:type="array">
+                                                <item name="component" xsi:type="string">Geekhub_CustomerOrder/js/view/confirm</item>
+                                                <item name="sortOrder" xsi:type="string">3</item>
+                                                <item name="dataScope" xsi:type="string">data</item>
+                                                <item name="config" xsi:type="array">
+                                                    <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                    <item name="template" xsi:type="string">Geekhub_CustomerOrder/confirm</item>
+                                                </item>
+                                                <item name="children" xsi:type="array">
+                                                    <item name="test_input" xsi:type="array">
+                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                        <item name="dataScope" xsi:type="string">test_input</item>
+                                                        <item name="config" xsi:type="array">
+                                                            <item name="label" xsi:type="string" translate="true">Test Input</item>
+                                                            <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                            <!--<item name="validation" xsi:type="array">-->
+                                                                <!--<item name="required-entry" xsi:type="boolean">true</item>-->
+                                                            <!--</item>-->
+                                                            <item name="deps" xsi:type="array">
+                                                                <item name="0" xsi:type="string">checkoutProvider</item>
+                                                            </item>
+                                                            <item name="template" xsi:type="string">ui/form/field</item>
+                                                            <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                                            <item name="tooltip" xsi:type="array">
+                                                                <item name="description" xsi:type="string" translate="true">Test description.</item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                    <item name="test_select" xsi:type="array">
+                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/select</item>
+                                                        <item name="dataScope" xsi:type="string">test_select</item>
+                                                        <item name="options" xsi:type="array">
+                                                            <item name="0" xsi:type="array">
+                                                                <item name="label" xsi:type="string">Option 1</item>
+                                                                <item name="value" xsi:type="string">option_1</item>
+                                                            </item>
+                                                            <item name="1" xsi:type="array">
+                                                                <item name="label" xsi:type="string">Option 2</item>
+                                                                <item name="value" xsi:type="string">option_2</item>
+                                                            </item>
+                                                        </item>
+                                                        <item name="config" xsi:type="array">
+                                                            <item name="label" xsi:type="string" translate="true">Test Select</item>
+                                                            <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                            <item name="deps" xsi:type="array">
+                                                                <item name="0" xsi:type="string">checkoutProvider</item>
+                                                            </item>
+                                                            <item name="template" xsi:type="string">ui/form/field</item>
+                                                            <item name="elementTmpl" xsi:type="string">ui/form/element/select</item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                            <item name="success-step" xsi:type="array">
+                                                <item name="component" xsi:type="string">Geekhub_CustomerOrder/js/view/success</item>
+                                                <item name="sortOrder" xsi:type="string">4</item>
+                                                <item name="config" xsi:type="array">
+                                                    <item name="template" xsi:type="string">Geekhub_CustomerOrder/success</item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                            <item name="checkoutProvider" xsi:type="array">
+                                <item name="component" xsi:type="string">uiComponent</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
