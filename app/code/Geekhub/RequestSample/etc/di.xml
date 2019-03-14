@@ -6,4 +6,13 @@
                 type="Geekhub\RequestSample\Model\RequestSample" />
     <preference for="Geekhub\RequestSample\Api\RequestSampleRepositoryInterface"
                 type="Geekhub\RequestSample\Model\RequestSampleRepository" />
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="request_sample_populate_requests" xsi:type="object">
+                    Geekhub\RequestSample\Console\Command\PopulateRequests
+                </item>
+            </argument>
+        </arguments>
+    </type>
 </config>
