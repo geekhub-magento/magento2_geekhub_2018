@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="salesrule_validator_process">
+        <observer name="geekhub_salesrule_by_percent_discount_calculator"
+                  instance="Geekhub\SalesRule\Observer\ByPercentCalculator"/>
+        <observer name="geekhub_salesrule_by_fixed_discount_calculator"
+                  instance="Geekhub\SalesRule\Observer\ByFixedCalculator"/>
+    </event>
+</config>

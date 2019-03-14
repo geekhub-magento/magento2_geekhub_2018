@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="actions">
+        <field name="apply_action_on">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Apply On</item>
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">sales_rule</item>
+                    <item name="dataScope" xsi:type="string">apply_action_on</item>
+                    <item name="notice" xsi:type="string"><![CDATA[Only for "Percent of product price discount" and "Fixed amount discount" rules. Apply on Price - discount is subtracted from Price. If Special or Tier Price is lower then it will be used. Apply on the Minimal Price - discount is subtracted from minimal price (the lowest of Price, Special or Tier price)]]></item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>
