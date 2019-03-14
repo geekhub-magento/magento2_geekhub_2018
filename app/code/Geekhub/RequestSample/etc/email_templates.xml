@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="request_sample_email_template"
+              label="Request Sample Email Template"
+              file="request_sample.html"
+              type="html"
+              module="Geekhub_RequestSample"
+              area="frontend"/>
+</config>

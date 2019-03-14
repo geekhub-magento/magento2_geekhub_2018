@@ -3,7 +3,6 @@
 namespace Geekhub\RequestSample\Controller\Submit;
 
 use Geekhub\RequestSample\Api\Data\RequestSampleInterface;
-use Geekhub\RequestSample\Api\RequestSampleRepositoryInterface;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\LocalizedException;
@@ -15,37 +14,45 @@ class Index extends \Magento\Framework\App\Action\Action
     const STATUS_SUCCESS = 'Success';
 
     /**
-     * @var \Magento\Framework\Data\Form\FormKey\Validator
+     * @var \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
      */
     private $formKeyValidator;
 
     /**
-     * @var \Geekhub\RequestSample\Model\RequestSampleFactory
+     * @var \Geekhub\RequestSample\Model\RequestSampleFactory $requestSampleFactory
      */
     private $requestSampleFactory;
 
     /**
-     * @var RequestSampleRepositoryInterface
+     * @var \Geekhub\RequestSample\Api\RequestSampleRepositoryInterface $requestSampleRepository
      */
     private $requestSampleRepository;
+
+    /**
+     * @var \Geekhub\RequestSample\Helper\Mail $mailHelper
+     */
+    private $mailHelper;
 
     /**
      * Index constructor.
      * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
      * @param \Geekhub\RequestSample\Model\RequestSampleFactory $requestSampleFactory
-     * @param RequestSampleRepositoryInterface $requestSampleRepository
+     * @param \Geekhub\RequestSample\Api\RequestSampleRepositoryInterface $requestSampleRepository
      * @param \Magento\Framework\App\Action\Context $context
+     * @param \Geekhub\RequestSample\Helper\Mail $mailHelper
      */
     public function __construct(
         \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
         \Geekhub\RequestSample\Model\RequestSampleFactory $requestSampleFactory,
-        RequestSampleRepositoryInterface $requestSampleRepository,
+        \Geekhub\RequestSample\Api\RequestSampleRepositoryInterface $requestSampleRepository,
+        \Geekhub\RequestSample\Helper\Mail $mailHelper,
         \Magento\Framework\App\Action\Context $context
     ) {
         parent::__construct($context);
         $this->formKeyValidator = $formKeyValidator;
         $this->requestSampleFactory = $requestSampleFactory;
         $this->requestSampleRepository = $requestSampleRepository;
+        $this->mailHelper = $mailHelper;
     }
 
     /**
@@ -81,6 +88,16 @@ class Index extends \Magento\Framework\App\Action\Action
 
             $this->requestSampleRepository->save($requestSample);
 
+            /**
+             * Send Email
+             */
+            if ($request->getParam('email')) {
+                $email = $request->getParam('email');
+                $customerName = $request->getParam('name');
+                $message = $request->getParam('request');
+
+                $this->mailHelper->sendMail($email, $customerName, $message);
+            }
             $data = [
                 'status' => self::STATUS_SUCCESS,
                 'message' => 'Your request was submitted. We\'ll get in touch with you as soon as possible.'
